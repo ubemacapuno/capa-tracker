@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CAPA Tracker</title>
+        <!--stylesheet-->
+        <link rel="stylesheet" href="/style.css">
+        <!--GOOGLE FONT-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@500&display=swap" rel="stylesheet">
+        <!--ICONS-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <section class="capa-tracking-container">
+            <h2>CAPA Tracker</h2>
+            <section class="item">
+                <!-- forms can interface DIRECTLY with some of our CRUD operations (ex. sending post requests to server) -->
+                <form action="/" method="POST" class="item-header">
+                    <input type="text" name="capaNumber" placeholder="CAPA Number">
+                    <input type="text" name="capaStatus" placeholder="CAPA Approval Status">
+                    <input type="text" name="capaPhase" placeholder="CAPA Phase">
+                    <input type="text" name="problemStatement" placeholder="Problem Statement">
+                    <input type="date" name="nextPhaseDueDate">
+                    <button type="submit"><span class="fas fa-plus">Add CAPA</span></button>
+                </form>
+            </section>
+        </section>        
+    </body>
+</html>
