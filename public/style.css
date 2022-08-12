@@ -30,6 +30,16 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   line-height: 1.75;
-  color: #000000;
-  background: var(--background-color);
+  color: var(--nav-text-color);
+  background: var(--secondary-accent-color);
+}
+
+form {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+}
+
+input {
+	margin: 1rem;
 }
