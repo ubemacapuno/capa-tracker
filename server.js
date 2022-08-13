@@ -33,6 +33,7 @@ app.get('/', async (req, res) => {
 })
 
 //POST-request method for post-requests:
+//Contains object with properties and values that will be passed to the db
 app.post('/', async (req,res) => {
     const capaReport = new CapaReport(
         {
@@ -42,6 +43,8 @@ app.post('/', async (req,res) => {
             capaPhase: req.body.capaPhase,
             problemStatement: req.body.problemStatement,
             nextPhaseDueDate: req.body.nextPhaseDueDate,
+            dateCapaApproved: req.body.dateCapaApproved,
+            productImpacted: req.body.productImpacted,
         }
     )
     try {
@@ -53,6 +56,7 @@ app.post('/', async (req,res) => {
         res.redirect('/')
     }
 })
+
 
 
 

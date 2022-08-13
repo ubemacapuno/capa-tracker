@@ -14,19 +14,54 @@
         <!--ICONS-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
     </head>
     <body>
         <section class="capa-tracking-container">
-            <h2>CAPA Tracker</h2>
-            <section class="item">
+            <h1>CAPA Tracker Module</h1>
+            <section class="capa-submission">
                 <!-- forms can interface DIRECTLY with some of our CRUD operations (ex. sending post requests to server) -->
                 <form action="/" method="POST" class="item-header">
-                    <input type="text" name="capaNumber" placeholder="CAPA Number">
-                    <input type="text" name="capaStatus" placeholder="CAPA Approval Status">
-                    <input type="text" name="capaPhase" placeholder="CAPA Phase">
-                    <input type="text" name="problemStatement" placeholder="Problem Statement">
-                    <span>Next Phase Due Date:</span><input type="date" name="nextPhaseDueDate">
+                    <h2>Add a New CAPA</h2>
+                    <!-- CAPA Number -->
+                    <label>CAPA Number: </label>
+                    <input type="text" name="capaNumber">
+
+                    <!-- Approval status -->
+                    <label>Approval Status:</label>
+                    <select name="capaStatus">
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+
+                    <!-- CAPA Phase -->
+                    <label>Phase:</label>
+                    <!-- <input type="text" name="capaPhase" placeholder="CAPA Phase"> -->
+                    <select name="capaPhase">
+                        <option value="initiation">Initiation</option>
+                        <option value="riskAssessment">Risk Assessment</option>
+                        <option value="containmentCorrection">Containment & Correction</option>
+                        <option value="investigation">Investigation/Root Cause anaylysis</option>
+                        <option value="correctivePreventiveActions">Corrective/Preventive Actions</option>
+                        <option value="implementation">Implementation</option>
+                        <option value="voe">VOE</option>
+                        <option value="closure">Closure</option>
+                    </select>
+
+                    <!-- CAPA Number -->
+                    <label>Product Impacted: </label>
+                    <input type="text" name="productImpacted">
+
+                    <!-- Problem Statement -->
+                    <label>Problem Statement:</label>
+                    <!-- <input type="text" name="problemStatement" placeholder="Problem Statement"> -->
+                    <textarea name="problemStatement" rows="5" cols="50"></textarea>
+
+                    <!-- Date approved/rejected -->
+                    <label>Date CAPA Approved or Rejected (if applicable):</label><input type="date" name="dateCapaApproved">
+
+                    <!-- Next phase due date -->
+                    <label>Next Phase Due Date:</label><input type="date" name="nextPhaseDueDate">
                     <button type="submit"><span class="fas fa-plus">Add CAPA</span></button>
                 </form>
             </section>

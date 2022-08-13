@@ -21,8 +21,14 @@ const capaReportSchema = new mongoose.Schema({
     problemStatement: {
         type: String,
     },
+    dateCapaApproved: {
+        type: Date,
+    },
     nextPhaseDueDate: {
         type: Date,
+    },
+    productImpacted: {
+        type: String,
     },
 })
 //export the schema to mongodb
