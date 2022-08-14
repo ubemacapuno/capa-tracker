@@ -21,12 +21,11 @@
 
 html {
 	font-size: 100%;
-	color: var(--dark-color);
+	color: var(--text-color);
 	background-color: var(--dark-color);
 } /*16px*/
 
 body {
-  background: var(--background-color);
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   line-height: 1.75;
@@ -46,15 +45,19 @@ form {
 
 h1 {
 	color: var(--secondary-color);
+	text-align: center;
 }
 
 h2 {
-	text-decoration: underline;
+	color: var(--secondary-color);
+}
+
+.capa-submission h2 {
 	color: var(--dark-color);
 }
 
 input, select, textarea{
-	margin: 0 0.8rem 2.2rem 0.8rem;
+	margin: 0 0.8rem 1.2rem 0.8rem;
 }
 
 h2, label {
@@ -79,11 +82,71 @@ button {
 	border-radius: 5px;
 	border: 1px solid var(--text-color);
 	color: var(--off-white);
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+button:hover {
+	color: var(--secondary-color);
+	background-color: var(--primary-color);
 }
 
 .capa-tracking-container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
+}
+
+.capa-collection {
+	height: 500px;
+	overflow: auto;
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	border: 2px solid var(--white);
+	border-radius: 10px;
+	color: var(--white);
+	background-color: var(--primary-color);
+	padding: 1rem;
+	width: 500px;
+	margin-top: 1rem;
+}
+
+.single-capa-item {
+	padding: 2rem 0;
+	list-style: none;
+	border-bottom: 1px solid var(--white);
+	border-top: 1px solid var(--white);
+}
+
+.due-prefix {
+	color: var(--secondary-color)
+}
+
+.button-container a{
+	color: var(--tertiary-color);
+	transition: all 0.2s;
+}
+
+.button-container a:hover {
+	color: var(--dark-color);
+}
+
+/* Classes and Pseudo-elements specific for Edit page */
+.edit-approval-status, .edit-phase {
+	color: var(--primary-color);
+	font-size: 1.2rem;
+}
+
+.edit-phase::before {
+	color: var(--text-color);
+	content:"Current Phase: ";
+	font-size: 1rem;
+}
+
+.edit-approval-status::before {
+	color: var(--text-color);
+	content:"Current Approval Status Status: ";
+	font-size: 1rem;
 }

@@ -1,0 +1,75 @@
+<head>
+    <title>CAPA Tracking Module - Edit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <section>
+        <h2>Edit CAPA Information</h2>
+        <section>
+            <ul>
+                <% capaReports.forEach(capa => { %>
+                    <!--Display the capas like normal EXCEPT for the capa that is being EDITED-->
+                    <% if (capa._id==idCapa) { %>
+                        <li>
+                            <!-- Add a form for editing: -->
+                            <form action="/edit/<%= capa._id %>" method="POST">
+                                <!--In the form, show the values of the item you are trying to edit:-->
+                                <!--CAPA Number-->
+                                <input type="text" value="<%= capa.capaNumber %>" name="capaNumber">
+
+                                <!--Approval Status-->
+                                <label class="edit-approval-status"><%= capa.capaStatus %></label>
+                                <select name="capaStatus">
+                                    <option value="<%= capa.capaStatus %>"><%= capa.capaStatus %></option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Rejected">Rejected</option>
+                                </select>
+
+                                <!-- CAPA Phase -->
+                                <label class="edit-phase"><%= capa.capaPhase %></label>                            
+                                <select name="capaPhase">
+                                    <option value="<%= capa.capaPhase %>">(Current) <%= capa.capaPhase %></option>
+                                    <option value="Initiation">Initiation</option>
+                                    <option value="Risk Assessment">Risk Assessment</option>
+                                    <option value="Containment & Correction">Containment & Correction</option>
+                                    <option value="Investigation/Root Cause Anaylysis">Investigation/Root Cause Anaylysis</option>
+                                    <option value="Corrective/Preventive Actions">Corrective/Preventive Actions</option>
+                                    <option value="Implementation">Implementation</option>
+                                    <option value="VOE">VOE</option>
+                                    <option value="Closure">Closure</option>
+                                </select>
+
+                                <!-- Product Impact -->
+                                <label>Product Impacted: </label>
+                                <input type="text" placeholder="<%= capa.productImpacted %>" name="productImpacted">
+
+                                <!-- Problem Statement -->
+                                <label>Problem Statement:</label>
+                                <!-- <input type="text" name="problemStatement" placeholder="Problem Statement"> -->
+                                <textarea placeholder="<%= capa.problemStatement %>" name="problemStatement" rows="5" cols="50"></textarea>
+
+                                <!-- Date approved/rejected -->
+                                <label>Date CAPA Approved or Rejected (if applicable):</label><input type="date" name="dateCapaApproved" required>
+
+                                <label>Current Phase Due Date:</label><input type="date" name="currentPhaseDueDate" required>
+
+                                <!--Add confirm and cancel buttons-->
+                                <button type="submit" class="confirm">Confirm</button>
+                                <a href="/" class="cancel">Cancel</a>
+                            </form>
+                        </li>
+                    <% }})  %>
+
+            </ul>
+        </section>
+    </section>
+</body>

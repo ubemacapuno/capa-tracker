@@ -42,7 +42,7 @@ app.post('/', async (req,res) => {
             capaStatus: req.body.capaStatus,
             capaPhase: req.body.capaPhase,
             problemStatement: req.body.problemStatement,
-            nextPhaseDueDate: req.body.nextPhaseDueDate,
+            currentPhaseDueDate: req.body.currentPhaseDueDate,
             dateCapaApproved: req.body.dateCapaApproved,
             productImpacted: req.body.productImpacted,
         }
@@ -57,15 +57,48 @@ app.post('/', async (req,res) => {
     }
 })
 
+//UPDATE Request for capa editing:
+app //chain multiple methods together (route, get, post)
+    .route("/edit/:id") //pass the object id
+    .get((req, res) => {
+        const id = req.params.id;
+        CapaReport.find({}, (err, capas) => {
+            res.render("edit.ejs", { 
+                capaReports: capas, idCapa: id });
+        });
+    })
+    .post((req, res) => {
+        const id = req.params.id;
+        CapaReport.findByIdAndUpdate(//mongoose method for Updating
+            id,
+            {
+                capaNumber: req.body.capaNumber,
+                dateCapaCreated: req.body.dateCapaCreated,
+                capaStatus: req.body.capaStatus,
+                capaPhase: req.body.capaPhase,
+                problemStatement: req.body.problemStatement,
+                currentPhaseDueDate: req.body.currentPhaseDueDate,
+                dateCapaApproved: req.body.dateCapaApproved,
+                productImpacted: req.body.productImpacted,
+            },
+
+            err => {
+                if (err) return res.status(500).send(err);
+                res.redirect("/");
+            });
+    });
 
 
-
-
-
-
-
-
-
+//Delete-request for capa removal:
+app 
+    .route("/remove/:id")
+    .get((req,res) => {
+        const id = req.params.id
+        CapaReport.findByIdAndRemove(id, err => {
+            if (err) return res.status(500).send(err)
+            res.redirect('/')
+        })
+    })
 
  //app,listen() to initialize the server
 app.listen(process.env.PORT || PORT, () => console.log(`Express server is running on port ${PORT}!`))

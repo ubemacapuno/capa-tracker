@@ -16,12 +16,13 @@
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     </head>
     <body>
-        <section class="capa-tracking-container">
-            <h1>CAPA Tracker Module</h1>
+        <h1>CAPA Tracker Module</h1>
+        <div class="capa-tracking-container">
+
             <section class="capa-submission">
                 <!-- forms can interface DIRECTLY with some of our CRUD operations (ex. sending post requests to server) -->
                 <form action="/" method="POST" class="item-header">
-                    <h2>Add a New CAPA</h2>
+                    <h2>Submit a New CAPA Report</h2>
                     <!-- CAPA Number -->
                     <label>CAPA Number: </label>
                     <input type="text" name="capaNumber">
@@ -29,26 +30,26 @@
                     <!-- Approval status -->
                     <label>Approval Status:</label>
                     <select name="capaStatus">
-                        <option value="pending">Pending</option>
-                        <option value="approved">Approved</option>
-                        <option value="rejected">Rejected</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
                     </select>
 
                     <!-- CAPA Phase -->
                     <label>Phase:</label>
                     <!-- <input type="text" name="capaPhase" placeholder="CAPA Phase"> -->
                     <select name="capaPhase">
-                        <option value="initiation">Initiation</option>
-                        <option value="riskAssessment">Risk Assessment</option>
-                        <option value="containmentCorrection">Containment & Correction</option>
-                        <option value="investigation">Investigation/Root Cause anaylysis</option>
-                        <option value="correctivePreventiveActions">Corrective/Preventive Actions</option>
-                        <option value="implementation">Implementation</option>
-                        <option value="voe">VOE</option>
-                        <option value="closure">Closure</option>
+                        <option value="Initiation">Initiation</option>
+                        <option value="Risk Assessment">Risk Assessment</option>
+                        <option value="Containment & Correction">Containment & Correction</option>
+                        <option value="Investigation/Root Cause Anaylysis">Investigation/Root Cause Anaylysis</option>
+                        <option value="Corrective/Preventive Actions">Corrective/Preventive Actions</option>
+                        <option value="Implementation">Implementation</option>
+                        <option value="VOE">VOE</option>
+                        <option value="Closure">Closure</option>
                     </select>
 
-                    <!-- CAPA Number -->
+                    <!-- Product Impact -->
                     <label>Product Impacted: </label>
                     <input type="text" name="productImpacted">
 
@@ -58,13 +59,40 @@
                     <textarea name="problemStatement" rows="5" cols="50"></textarea>
 
                     <!-- Date approved/rejected -->
-                    <label>Date CAPA Approved or Rejected (if applicable):</label><input type="date" name="dateCapaApproved">
+                    <label>Approval/Rejection Date (or due date) - UTC Timezone:</label>
+                    <input type="date" name="dateCapaApproved" required>
 
-                    <!-- Next phase due date -->
-                    <label>Next Phase Due Date:</label><input type="date" name="nextPhaseDueDate">
+                    <!-- phase due date -->
+                    <label>Current Phase Due Date - UTC Timezone:</label><input type="date" name="currentPhaseDueDate" required>
                     <button type="submit"><span class="fas fa-plus">Add CAPA</span></button>
                 </form>
             </section>
-        </section>        
+
+            <!-- Loop through and display all capas currently in database: -->
+            <section class="capa-collection">
+                <h2>Open CAPAs</h2> 
+                <ul>
+                    <% capaReports.forEach(capa => {%> <!--Can name parameter whatever, let's use "capa" though to line up with the name of our db collection-->
+                        <li class="single-capa-item">
+                            <div>
+                                <%= capa.capaNumber %>
+                            </div>
+                            <div class="fifo-list-item-expiration-date">
+                                <span class="due-prefix">Current Phase Due Date: </span>
+                                <span><%= capa.currentPhaseDueDate.toDateString()%> (UTC)</span>
+                                <!--toDateString() converts date format-->
+                            </div>
+                            <!-- edit button and trash button -->
+                            <!-- grab the id of the capa we're currently on and send it -->
+                            <div class="button-container">
+                                <a href="/edit/<%=capa._id %>" class="edit"><span class="fas fa-edit"></span></a>
+                                <a href="/remove/<%=capa._id %>" class="remove"><span class="fas fa-trash"></span></a>
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
+            </section>
+
+        </div>        
     </body>
 </html>

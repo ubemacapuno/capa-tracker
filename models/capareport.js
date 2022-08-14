@@ -12,11 +12,11 @@ const capaReportSchema = new mongoose.Schema({
     },
     capaStatus: {
         type: String,
-        default: "Pending Approval"
+        default: "Pending Approval",
     },
     capaPhase: {
         type: String,
-        default: "Initiation"
+        default: "Initiation",
     },
     problemStatement: {
         type: String,
@@ -24,7 +24,7 @@ const capaReportSchema = new mongoose.Schema({
     dateCapaApproved: {
         type: Date,
     },
-    nextPhaseDueDate: {
+    currentPhaseDueDate: {
         type: Date,
     },
     productImpacted: {
