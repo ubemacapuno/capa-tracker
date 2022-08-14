@@ -9,6 +9,7 @@
 	--text-color: #333335;
 	--dark-color: #323334;
 	--light-color: #ECEEEF;
+	--gray-background: rgb(92, 92, 92);
     font-family: 'Roboto Mono', monospace;
 
 }
@@ -22,7 +23,7 @@
 html {
 	font-size: 100%;
 	color: var(--text-color);
-	background-color: var(--dark-color);
+	background-color: var(--gray-background);
 } /*16px*/
 
 body {
@@ -37,7 +38,7 @@ form {
 	display: flex;
 	align-items: flex-start;
 	flex-direction: column;
-	border: 2px solid var(--white);
+	border: 2px solid var(--dark-color);
 	border-radius: 10px;
 	width: 500px;
 	background-color: var(--tertiary-color);
@@ -75,18 +76,26 @@ textarea {
 	padding: 1rem;
 }
 
-button {
+.cancel {
+	text-decoration: none;
+}
+
+button, .cancel-button {
+	height: 40px;
 	margin: 1rem;
+	width: 100px;
 	padding: 0.5rem;
+	font-size: 0.9rem;
 	background-color: var(--dark-color);
 	border-radius: 5px;
 	border: 1px solid var(--text-color);
 	color: var(--off-white);
 	cursor: pointer;
 	transition: all 0.2s;
+	text-align: center;
 }
 
-button:hover {
+button:hover, .cancel-button:hover {
 	color: var(--secondary-color);
 	background-color: var(--primary-color);
 }
@@ -104,7 +113,7 @@ button:hover {
 	display: flex;
 	align-items: flex-start;
 	flex-direction: column;
-	border: 2px solid var(--white);
+	border: 2px solid var(--dark-color);
 	border-radius: 10px;
 	color: var(--white);
 	background-color: var(--primary-color);
@@ -124,29 +133,53 @@ button:hover {
 	color: var(--secondary-color)
 }
 
-.button-container a{
+.button-container a, .cancel-button a{
 	color: var(--tertiary-color);
 	transition: all 0.2s;
 }
 
-.button-container a:hover {
+.button-container a:hover, .cancel-button a:hover {
 	color: var(--dark-color);
 }
 
+.edit-section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
 /* Classes and Pseudo-elements specific for Edit page */
-.edit-approval-status, .edit-phase {
+.edit-approval-status, .edit-phase, .edit-date-capa-approved, .edit-current-phase-date, .edit-product-impacted, .edit-capa-number {
 	color: var(--primary-color);
 	font-size: 1.2rem;
 }
 
-.edit-phase::before {
+.edit-phase::before, .edit-approval-status::before, .edit-date-capa-approved::before, .edit-current-phase-date::before, .edit-product-impacted::before, .edit-capa-number::before {
 	color: var(--text-color);
-	content:"Current Phase: ";
 	font-size: 1rem;
 }
 
+.edit-capa-number::before {
+	content:"Current CAPA Number: ";
+}
+
+.edit-phase::before {
+	content:"Current Phase: ";
+}
+
 .edit-approval-status::before {
-	color: var(--text-color);
 	content:"Current Approval Status Status: ";
-	font-size: 1rem;
+}
+
+.edit-date-capa-approved::before {
+	content:"Current Approval or Rejection Date (or due): ";
+}
+
+.edit-current-phase-date::before {
+	content:"Current Phase Due Date: ";
+}
+
+.edit-product-impacted::before {
+	content: "Product Line Impacted (if applicable): "
 }
