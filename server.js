@@ -1,4 +1,5 @@
 const express = require('express')
+const { ensureAuth, ensureGuest } = require('./middleware/auth')
 const app = express()
 const PORT = 8500;
 const mongoose = require('mongoose');
@@ -41,8 +42,8 @@ app.use(passport.session())
 app.use('/auth', require('./routes/auth'))
 
 
-//GET-request method to render the page (route '/capaTracking'):
-app.get('/capa', async (req, res) => {
+//GET-request method to render the page (route '/capa'):
+app.get('/capa', ensureAuth, async (req, res) => {
     try {
         CapaReport.find({}, (err,capas) => {
             //Render and FIND list in the database:
@@ -56,8 +57,8 @@ app.get('/capa', async (req, res) => {
 })
 
 
-//GET-request for rendering the login page at route '/'. Does not need async since we are not fetching from a server:
-app.get('/',(request,response) => {
+//GET-request for rendering the login page at route '/'. Does not need async since we are not fetching from a server. Pass "ensureGuest", meaning user does not need to be logged-in to access login page.
+app.get('/', ensureGuest, (request,response) => {
     response.render('login.ejs')
 })
 
@@ -87,17 +88,16 @@ app.post('/', async (req,res) => {
     }
 })
 
-//UPDATE Request for capa editing:
-app //chain multiple methods together (route, get, post)
-    .route("/edit/:id") //pass the object id
-    .get((req, res) => {
+//UPDATE Request for capa editing - pass "ensureAuth" so only logged-in users can access these routes.
+app //chain multiple methods together (route, get, post, etc.)
+    .get("/edit/:id", ensureAuth, (req, res) => {
         const id = req.params.id;
         CapaReport.find({}, (err, capas) => {
             res.render("edit.ejs", { 
                 capaReports: capas, idCapa: id });
         });
     })
-    .post((req, res) => {
+    .post("/edit/:id", ensureAuth,(req, res) => {
         const id = req.params.id;
         CapaReport.findByIdAndUpdate(//mongoose method for Updating
             id,
@@ -107,9 +107,6 @@ app //chain multiple methods together (route, get, post)
                 capaStatus: req.body.capaStatus,
                 capaPhase: req.body.capaPhase,
                 problemStatement: req.body.problemStatement,
-                currentPhaseDueDate: req.body.currentPhaseDueDate,
-                dateCapaApproved: req.body.dateCapaApproved,
-                productImpacted: req.body.productImpacted,
             },
 
             err => {
@@ -118,17 +115,16 @@ app //chain multiple methods together (route, get, post)
             });
     });
 
-//UPDATE Request for capa date editing:
-app //chain multiple methods together (route, get, post)
-    .route("/editdates/:id") //pass the object id
-    .get((req, res) => {
+//UPDATE Request for capa date editing - pass "ensureAuth" so only logged-in users can access these routes.
+app //chain multiple methods together (route, get, post, etc.)
+    .get("/editdates/:id", ensureAuth, (req, res) => {
         const id = req.params.id;
         CapaReport.find({}, (err, capas) => {
             res.render("editdates.ejs", { 
                 capaReports: capas, idCapa: id });
         });
     })
-    .post((req, res) => {
+    .post("/editdates/:id", ensureAuth, (req, res) => {
         const id = req.params.id;
         CapaReport.findByIdAndUpdate(//mongoose method for Updating
             id,
