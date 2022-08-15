@@ -50,7 +50,7 @@ app.get('/capa', async (req, res) => {
                 capaReports: capas
             })
         })  
-    } catch (error) {
+    } catch (err) {
         if (err) return res.status(500).send(err)        
     }
 })

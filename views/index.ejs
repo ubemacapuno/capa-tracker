@@ -20,7 +20,7 @@
             <div class="logout">
                 <div class="logo-and-title">
                     <img src="/images/capa-tracking-logo.svg" alt="capa logo">
-                    <h1>CAPA Tracker App</h1>
+                    <h1>CAPA Tracker</h1>
                 </div>
                 <a href="/auth/logout">Logout</a>
             </div>
@@ -78,7 +78,13 @@
 
             <!-- Loop through and display all capas currently in database: -->
             <section class="capa-collection">
-                <h2>Open CAPAs</h2> 
+                <h2 class="capa-counter">CAPAs Currently Open:  
+                    <% let counter = 0;
+                    capaReports.forEach(capa => {
+                        counter ++
+                    })%> 
+                    <%= counter %>
+                </h2> 
                 <ul>
                     <% capaReports.forEach(capa => {%> <!--Can name parameter whatever, let's use "capa" though to line up with the name of our db collection-->
                         <li class="single-capa-item">
