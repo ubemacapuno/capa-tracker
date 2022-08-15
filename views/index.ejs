@@ -33,10 +33,10 @@
                     <h2>Submit a New CAPA Report</h2>
                     <!-- CAPA Number -->
                     <label>CAPA Number: </label>
-                    <input type="text" name="capaNumber">
+                    <input type="text" name="capaNumber" required>
 
                     <!-- Approval status -->
-                    <label>Approval Status:</label>
+                    <label>Approval Status:</label required>
                     <select name="capaStatus">
                         <option value="Pending">Pending</option>
                         <option value="Approved">Approved</option>
@@ -46,7 +46,7 @@
                     <!-- CAPA Phase -->
                     <label>Phase:</label>
                     <!-- <input type="text" name="capaPhase" placeholder="CAPA Phase"> -->
-                    <select name="capaPhase">
+                    <select name="capaPhase" required>
                         <option value="Initiation">Initiation</option>
                         <option value="Risk Assessment">Risk Assessment</option>
                         <option value="Containment & Correction">Containment & Correction</option>
@@ -59,12 +59,12 @@
 
                     <!-- Product Impact -->
                     <label>Product Impacted: </label>
-                    <input type="text" name="productImpacted">
+                    <input type="text" name="productImpacted" required>
 
                     <!-- Problem Statement -->
                     <label>Problem Statement:</label>
                     <!-- <input type="text" name="problemStatement" placeholder="Problem Statement"> -->
-                    <textarea name="problemStatement" rows="5" cols="50"></textarea>
+                    <textarea name="problemStatement" rows="5" cols="50" required></textarea>
 
                     <!-- Date approved/rejected -->
                     <label>Approval/Rejection Date (or due date) - UTC Timezone:</label>
@@ -78,7 +78,7 @@
 
             <!-- Loop through and display all capas currently in database: -->
             <section class="capa-collection">
-                <h2 class="capa-counter">CAPAs Currently Open:  
+                <h2 class="capa-counter">Total CAPAs:  
                     <% let counter = 0;
                     capaReports.forEach(capa => {
                         counter ++
@@ -103,7 +103,7 @@
                             <!-- edit button and trash button -->
                             <!-- grab the id of the capa we're currently on and send it -->
                             <div class="button-container">
-                                <a href="/edit/<%=capa._id %>" class="edit"><span class="fas fa-edit"></span></a>
+                                <a href="/edit/<%=capa._id %>" class="edit"><span class="fas fa-external-link-alt"></span></a>
                                 <a href="/remove/<%=capa._id %>" class="remove"><span class="fas fa-trash"></span></a>
                             </div>
                         </li>

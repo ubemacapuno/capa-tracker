@@ -64,15 +64,14 @@
                 <textarea name="problemStatement" rows="5" cols="50"><%= capa.problemStatement %></textarea>
 
                 <!-- Date approved/rejected -->
-                <label class="edit-date-capa-approved"><br /><%= capa.dateCapaApproved.toDateString()%> (UTC)</label>
-                <!--possibly add functionality to different page-->
-                <!-- <input type="date" name="dateCapaApproved" required> -->
+                <label class="edit-date-capa-approved">
+                    <br />
+                    <%= capa.dateCapaApproved.toDateString()%> (UTC)
+                </label>
 
                 <label class="edit-current-phase-date"><br /><%= capa.currentPhaseDueDate.toDateString()%> (UTC)</label>
-                <!--possibly add functionality to different page-->
-                <!-- <input type="date" name="currentPhaseDueDate" required> -->
 
-                <!--Confirm and cancel buttons-->
+                <!--Confirm, cancel, edit dates buttons-->
                 <div class="edit-button-container">
                     <button type="submit" class="confirm">Confirm</button>
                     <a href="/capa" class="cancel">
@@ -80,7 +79,13 @@
                             Cancel
                         </div>
                     </a>
+                    <a href="/editdates/<%=capa._id %>" class="edit-dates">
+                        <div class="edit-dates-button">
+                            Edit Dates
+                        </div>
+                    </a>
                 </div>
+              
             </form>
         <% }})  %>
         </section>
