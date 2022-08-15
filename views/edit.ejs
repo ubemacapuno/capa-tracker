@@ -35,7 +35,8 @@
                 <!--Approval Status-->
                 <label class="edit-approval-status"><%= capa.capaStatus %></label>
                 <select name="capaStatus">
-                    <option value="<%= capa.capaStatus %>"><%= capa.capaStatus %></option>
+                    <option value="<%= capa.capaStatus %>">(Current) <%= capa.capaStatus %></option>
+                    <option value="" disabled>---Choose Options Below---</option>
                     <option value="Pending">Pending</option>
                     <option value="Approved">Approved</option>
                     <option value="Rejected">Rejected</option>
@@ -45,6 +46,7 @@
                 <label class="edit-phase"><%= capa.capaPhase %></label>                            
                 <select name="capaPhase">
                     <option value="<%= capa.capaPhase %>">(Current) <%= capa.capaPhase %></option>
+                    <option value="" disabled>---Choose Options Below---</option>
                     <option value="Initiation">Initiation</option>
                     <option value="Risk Assessment">Risk Assessment</option>
                     <option value="Containment & Correction">Containment & Correction</option>
