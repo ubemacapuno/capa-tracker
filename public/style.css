@@ -1,3 +1,48 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* CSS RESET */
+
 :root {
     --pure-white: rgb(255, 255, 255);
 	--primary-color: #02727C;
@@ -9,8 +54,9 @@
 	--text-color: #333335;
 	--dark-color: #323334;
 	--light-color: #ECEEEF;
-	--gray-background: rgb(92, 92, 92);
+	--gray-background: rgb(179, 179, 179);
     font-family: 'Roboto Mono', monospace;
+	
 
 }
 
@@ -21,10 +67,13 @@
 }
 
 html {
+	height: 100%;
 	font-size: 100%;
 	color: var(--text-color);
 	background-color: var(--gray-background);
-} /*16px*/
+	background: linear-gradient(0deg, rgba(128,177,177,1) 0%, rgba(255,246,228,1) 100%);
+
+} 
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -34,12 +83,62 @@ body {
   background: var(--secondary-accent-color);
 }
 
+header {
+	background-color: var(--primary-color);
+}
+
+.box-shadow {
+	border: 1px solid;
+	box-shadow: 1px 4px 6px var(--dark-color);
+}
+
+.logo-and-title {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding-bottom: 1rem;
+}
+
+.logo-and-title img {
+	padding: 0 1rem;
+}
+
+.login-details {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 1rem 0;
+}
+
+.log-in-container{
+	margin-top: 100px;
+}
+
+.logout {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end; 
+	padding: 0.5rem 1rem 0;
+}
+
+.logout a {
+	color: var(--white);
+	transition: all 0.2s;
+	text-decoration: none;
+}
+
+.logout a:hover {
+	color: var(--tertiary-color);
+}
+
 form {
 	display: flex;
 	align-items: flex-start;
 	flex-direction: column;
 	border: 2px solid var(--dark-color);
 	border-radius: 10px;
+	height: 804px;
 	width: 500px;
 	background-color: var(--tertiary-color);
 }
@@ -47,10 +146,16 @@ form {
 h1 {
 	color: var(--secondary-color);
 	text-align: center;
+	padding-bottom: 1rem;
+	font-size: 1.5rem;
 }
 
 h2 {
 	color: var(--secondary-color);
+}
+
+.edit-header {
+	color: var(--dark-color);
 }
 
 .capa-submission h2 {
@@ -105,10 +210,11 @@ button:hover, .cancel-button:hover {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-evenly;
+	padding-top: 1rem;
 }
 
 .capa-collection {
-	height: 500px;
+	height: 600px;
 	overflow: auto;
 	display: flex;
 	align-items: flex-start;
@@ -129,7 +235,7 @@ button:hover, .cancel-button:hover {
 	border-top: 1px solid var(--white);
 }
 
-.due-prefix {
+.open-prefix {
 	color: var(--secondary-color)
 }
 
@@ -142,6 +248,10 @@ button:hover, .cancel-button:hover {
 	color: var(--dark-color);
 }
 
+.edit-form{
+	height: 700px;
+}
+
 .edit-section {
 	display: flex;
 	align-items: center;
@@ -149,10 +259,16 @@ button:hover, .cancel-button:hover {
 	flex-direction: column;
 }
 
+.edit-button-container {
+	padding-top: 1rem;
+	display: flex;
+	flex-direction: row;
+}
+
 /* Classes and Pseudo-elements specific for Edit page */
 .edit-approval-status, .edit-phase, .edit-date-capa-approved, .edit-current-phase-date, .edit-product-impacted, .edit-capa-number {
 	color: var(--primary-color);
-	font-size: 1.2rem;
+	font-size: 1rem;
 }
 
 .edit-phase::before, .edit-approval-status::before, .edit-date-capa-approved::before, .edit-current-phase-date::before, .edit-product-impacted::before, .edit-capa-number::before {

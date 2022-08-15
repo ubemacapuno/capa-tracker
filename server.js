@@ -3,10 +3,17 @@ const app = express()
 const PORT = 8500;
 const mongoose = require('mongoose');
 //Use env to add protection to the Mongo connection string: 
-require('dotenv').config()
+require('dotenv').config({path: './config/.env'})
 //add model variable "CapaReports" that was declared in capareport.js
 const CapaReport = require('./models/capareport.js')
+const connectDB = require('./config/db')
+const passport = require('passport')
+const session = require('express-session')
+const MongoStore = require('connect-mongo');
+// const MongoClient = require('mongodb').MongoClient
 
+require('./config/passport')(passport)
+connectDB()
 //Declare middlewares (move traffic to and from front-end to endpoints)
 app.set("view engine","ejs") //using ejs for our view engine. Located in views directory
 app.use(express.static('public')) //Express will refer to the public folder. Stylesheet goes in public.
@@ -18,8 +25,24 @@ mongoose.connect(process.env.DB_CONNECTION,
     () => {console.log("Connected to Mongo Database!")}
  )
 
-//GET-request method to render the page (route '/'):
-app.get('/', async (req, res) => {
+// Session Middleware
+app.use(
+    session({
+      secret: 'keyboard cat',
+      resave: false,
+      saveUninitialized: false,
+      store: MongoStore.create({mongoUrl: process.env.DB_CONNECTION,}),
+    })
+  )
+
+//Make sure this is AFTER the app.use(session) Middleware:
+app.use(passport.initialize())
+app.use(passport.session())
+app.use('/auth', require('./routes/auth'))
+
+
+//GET-request method to render the page (route '/capaTracking'):
+app.get('/capa', async (req, res) => {
     try {
         CapaReport.find({}, (err,capas) => {
             //Render and FIND list in the database:
@@ -31,6 +54,13 @@ app.get('/', async (req, res) => {
         if (err) return res.status(500).send(err)        
     }
 })
+
+
+//GET-request for rendering the login page at route '/'. Does not need async since we are not fetching from a server:
+app.get('/',(request,response) => {
+    response.render('login.ejs')
+})
+
 
 //POST-request method for post-requests:
 //Contains object with properties and values that will be passed to the db
@@ -50,10 +80,10 @@ app.post('/', async (req,res) => {
     try {
         await capaReport.save()
         console.log(capaReport)
-        res.redirect("/")
+        res.redirect('/capa')
     } catch(err){
         if (err) return res.status(500).send(err)
-        res.redirect('/')
+        res.redirect('/capa')
     }
 })
 
@@ -84,7 +114,7 @@ app //chain multiple methods together (route, get, post)
 
             err => {
                 if (err) return res.status(500).send(err);
-                res.redirect("/");
+                res.redirect("/capa");
             });
     });
 
@@ -96,9 +126,11 @@ app
         const id = req.params.id
         CapaReport.findByIdAndRemove(id, err => {
             if (err) return res.status(500).send(err)
-            res.redirect('/')
+            res.redirect('/capa')
         })
     })
 
  //app,listen() to initialize the server
-app.listen(process.env.PORT || PORT, () => console.log(`Express server is running on port ${PORT}!`))
+app.listen(process.env.PORT || PORT, () => {
+    console.log(`Express server is running on port ${PORT}!`)
+})
