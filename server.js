@@ -50,7 +50,7 @@ app.get('/capa', async (req, res) => {
                 capaReports: capas
             })
         })  
-    } catch (error) {
+    } catch (err) {
         if (err) return res.status(500).send(err)        
     }
 })
@@ -112,6 +112,30 @@ app //chain multiple methods together (route, get, post)
                 productImpacted: req.body.productImpacted,
             },
 
+            err => {
+                if (err) return res.status(500).send(err);
+                res.redirect("/capa");
+            });
+    });
+
+//UPDATE Request for capa date editing:
+app //chain multiple methods together (route, get, post)
+    .route("/editdates/:id") //pass the object id
+    .get((req, res) => {
+        const id = req.params.id;
+        CapaReport.find({}, (err, capas) => {
+            res.render("editdates.ejs", { 
+                capaReports: capas, idCapa: id });
+        });
+    })
+    .post((req, res) => {
+        const id = req.params.id;
+        CapaReport.findByIdAndUpdate(//mongoose method for Updating
+            id,
+            {
+                currentPhaseDueDate: req.body.currentPhaseDueDate,
+                dateCapaApproved: req.body.dateCapaApproved,
+            },
             err => {
                 if (err) return res.status(500).send(err);
                 res.redirect("/capa");

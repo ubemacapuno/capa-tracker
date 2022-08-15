@@ -14,7 +14,7 @@
     <div class="logout">
         <div class="logo-and-title">
             <img src="/images/capa-tracking-logo.svg" alt="capa logo">
-            <h1>CAPA Tracker App</h1>
+            <h1>CAPA Tracker</h1>
         </div>
         <a href="/auth/logout">Logout</a>
     </div>
@@ -24,7 +24,7 @@
         <% capaReports.forEach(capa => { %>
             <!--Display the capas like normal EXCEPT for the capa that is being EDITED-->
         <% if (capa._id==idCapa) { %>
-            <h2 class="edit-header">Update CAPA Information for <%= capa.capaNumber %></h2>
+            <h3 class="edit-header">Update CAPA Information for <%= capa.capaNumber %></h3>
                     <!-- Add a form for editing: -->
             <form class="edit-form" action="/edit/<%= capa._id %>" method="POST">
                 <!--In the form, show the values of the item you are trying to edit:-->
@@ -64,15 +64,14 @@
                 <textarea name="problemStatement" rows="5" cols="50"><%= capa.problemStatement %></textarea>
 
                 <!-- Date approved/rejected -->
-                <label class="edit-date-capa-approved"><br /><%= capa.dateCapaApproved.toDateString()%> (UTC)</label>
-                <!--possibly add functionality to different page-->
-                <!-- <input type="date" name="dateCapaApproved" required> -->
+                <label class="edit-date-capa-approved">
+                    <br />
+                    <%= capa.dateCapaApproved.toDateString()%> (UTC)
+                </label>
 
                 <label class="edit-current-phase-date"><br /><%= capa.currentPhaseDueDate.toDateString()%> (UTC)</label>
-                <!--possibly add functionality to different page-->
-                <!-- <input type="date" name="currentPhaseDueDate" required> -->
 
-                <!--Confirm and cancel buttons-->
+                <!--Confirm, cancel, edit dates buttons-->
                 <div class="edit-button-container">
                     <button type="submit" class="confirm">Confirm</button>
                     <a href="/capa" class="cancel">
@@ -80,7 +79,13 @@
                             Cancel
                         </div>
                     </a>
+                    <a href="/editdates/<%=capa._id %>" class="edit-dates">
+                        <div class="edit-dates-button">
+                            Edit Dates
+                        </div>
+                    </a>
                 </div>
+              
             </form>
         <% }})  %>
         </section>
