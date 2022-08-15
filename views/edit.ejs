@@ -26,7 +26,7 @@
         <% if (capa._id==idCapa) { %>
             <h2 class="edit-header">Update CAPA Information for <%= capa.capaNumber %></h2>
                     <!-- Add a form for editing: -->
-            <form action="/edit/<%= capa._id %>" method="POST">
+            <form class="edit-form" action="/edit/<%= capa._id %>" method="POST">
                 <!--In the form, show the values of the item you are trying to edit:-->
                 <!--CAPA Number-->
                 <label class="edit-capa-number"><%= capa.capaNumber %></label>
@@ -61,21 +61,26 @@
 
                 <!-- Problem Statement -->
                 <label>Problem Statement:</label>
-                <!-- <input type="text" name="problemStatement" placeholder="Problem Statement"> -->
                 <textarea name="problemStatement" rows="5" cols="50"><%= capa.problemStatement %></textarea>
 
                 <!-- Date approved/rejected -->
-                <label class="edit-date-capa-approved"><br /><%= capa.dateCapaApproved.toDateString()%> (UTC)</label><input type="date" name="dateCapaApproved" required>
+                <label class="edit-date-capa-approved"><br /><%= capa.dateCapaApproved.toDateString()%> (UTC)</label>
+                <!--possibly add functionality to different page-->
+                <!-- <input type="date" name="dateCapaApproved" required> -->
 
-                <label class="edit-current-phase-date"><br /><%= capa.currentPhaseDueDate.toDateString()%> (UTC)</label><input type="date" name="currentPhaseDueDate" required>
+                <label class="edit-current-phase-date"><br /><%= capa.currentPhaseDueDate.toDateString()%> (UTC)</label>
+                <!--possibly add functionality to different page-->
+                <!-- <input type="date" name="currentPhaseDueDate" required> -->
 
-                <!--Add confirm and cancel buttons-->
-                <button type="submit" class="confirm">Confirm</button>
-                <a href="/capa" class="cancel">
-                    <div class="cancel-button">
-                        Cancel
-                    </div>
-                </a>
+                <!--Confirm and cancel buttons-->
+                <div class="edit-button-container">
+                    <button type="submit" class="confirm">Confirm</button>
+                    <a href="/capa" class="cancel">
+                        <div class="cancel-button">
+                            Cancel
+                        </div>
+                    </a>
+                </div>
             </form>
         <% }})  %>
         </section>

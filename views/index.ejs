@@ -86,9 +86,13 @@
                                 <%= capa.capaNumber %>
                             </div>
                             <div class="fifo-list-item-expiration-date">
-                                <span class="due-prefix">Current Phase Due Date: </span>
+                                <span class="open-prefix">Current Phase Due Date: </span>
                                 <span><%= capa.currentPhaseDueDate.toDateString()%> (UTC)</span>
                                 <!--toDateString() converts date format-->
+                            </div>
+                            <div>
+                                <span class="open-prefix">Problem Statement: </span>
+                                <span><%= capa.problemStatement%></span>
                             </div>
                             <!-- edit button and trash button -->
                             <!-- grab the id of the capa we're currently on and send it -->
