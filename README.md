@@ -1,12 +1,16 @@
 ## CAPA Tracker: <a target="_blank" href="https://capa-tracking-api.herokuapp.com/">Visit Live DEMO Here</a>!
 
-Document and track CAPA reports with CAPA Tracker! This full-stack application allows users to create CAPA records, add information, update information, and delete entries.
+Document and track CAPA reports with CAPA Tracker! This full-stack application allows users to create CAPA records, add information, update information, and delete entries. This application incorporates Google authentication.
 
  <tr>
     <td width="100%"  style="align:center;" valign="top">
             <img src="https://github.com/ubemacapuno/images-for-github-readme/blob/main/capa-tracker.gif?raw=true" width="100%"  alt="CAPA Tracker demo animation."/>
     </td>
   </tr>
+
+## What are CAPAs?:
+
+CAPA stands for Corrective Action Preventive Action, and is a processes by which a manufacturing organization can make improvements to reduce non-conformances and process gaps. My background is in pharmaceutical and medical device quality assurance, and CAPA processes are required by the FDA in these industries. CAPA Tracker is an app that can help document and keep track of your organization's CAPAs! Read more about CAPAs <a href="https://en.wikipedia.org/wiki/Corrective_and_preventive_action#Medical_devices_and_FDA_compliance">HERE</a>.
 
 ## How It's Made:
 
@@ -55,6 +59,7 @@ In the future, I'd like to:
 - Refactor using components after learning more about EJS OR Refactor using a front-end JS framework (React/Svelte) and make components that way
 - Add functionality to include attachment uploads
 - Add functionality to support .csv export of CAPA data
+- Add logic to warn users of expired/near-expired items
   
 
 ## Lessons Learned:
