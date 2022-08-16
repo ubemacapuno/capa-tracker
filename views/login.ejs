@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+    integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>CAPA Tracking - Login</title>
 </head>
     <body class="login-body">
@@ -16,13 +19,21 @@
                 </div>
             </div>
         </header>
-        <div class="login-details">
-            <h3>Sign in with <a class="log-in" href="/auth/google">Google Authentication</a></h3>
-            
-            <h4>CAPA Tracker - By <a class="log-in" target="_blank" href="https://coreydamocles.netlify.app/">Corey Damocles</a></h4>
-            <p>Document and track CAPA reports with CAPA Tracker! This full-stack application allows users to create CAPA records, add information, update information, and delete entries. This application was developed with JavaScript (EJS templating language), HTML/CSS, Node/Express, Passport (Google authentication), and MongoDB. CAPA Tracker is currently a minimal viable product (MVP) and is not production-ready.</p>
-            <a href="https://github.com/ubemacapuno" target="_blank"><img src="/images/github.svg" alt="capa logo"></a>
-            <a href="https://www.linkedin.com/in/corey-damocles/" target="_blank"><img src="/images/linkedin.svg" alt="capa logo"></a>
+        <div class="login-details box-shadow">
+            <div class="about-title">
+                <img src="/images/capa-tracking-logo-small.svg" alt="capa logo">  
+                <h3 class="about-header">CAPA Tracker</h3>  
+            </div>
+            <p>By <a class="log-in" target="_blank" href="https://coreydamocles.netlify.app/">Corey Damocles</a></p>
+            <a href="https://github.com/ubemacapuno" target="_blank"><img class="social"  src="/images/github.svg" alt="capa logo"></a>
+            <a href="https://www.linkedin.com/in/corey-damocles/" target="_blank"><img class="social" src="/images/linkedin.svg" alt="capa logo"></a>
+            <p class="about">Document and track CAPA reports with <span id="capa-tracker">CAPA Tracker</span>! This full-stack application allows users to create CAPA records, add information, update information, and delete entries.</p>
+            <p>This application was developed with EJS templating language, HTML/CSS/JavaScript, Node/Express, Passport (Google authentication), and MongoDB. CAPA Tracker is currently a minimal viable product (MVP) and is not production-ready.</p>
+            <div class="google-login">
+                <a href="/auth/google" class="btn teal lighten-2">
+                    <i class="fab fa-google left"></i> Log In With Google
+                </a>
+            </div>
         </div>
     </body>
 </html>

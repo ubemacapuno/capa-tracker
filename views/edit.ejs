@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<header class="box-shadow">
-    <div class="logout">
-        <div class="logo-and-title">
-            <img src="/images/capa-tracking-logo.svg" alt="capa logo">
-            <h1>CAPA Tracker</h1>
+    <header class="box-shadow">
+        <div class="logout">
+            <div class="logo-and-title">
+                <a href="/capa"><img src="/images/capa-tracking-logo.svg" alt="capa logo"></a>
+                <h1>CAPA Tracker</h1>
+            </div>
+            <h4>Signed in as <%= name %>.  <a href="/auth/logout">Logout</a></h4>
         </div>
-        <a href="/auth/logout">Logout</a>
-    </div>
-</header>
+    </header>
     <div class="edit-section">
         <section>
         <% capaReports.forEach(capa => { %>
@@ -26,7 +26,7 @@
         <% if (capa._id==idCapa) { %>
             <h3 class="edit-header">Update CAPA Information for <%= capa.capaNumber %></h3>
                     <!-- Add a form for editing: -->
-            <form class="edit-form" action="/edit/<%= capa._id %>" method="POST">
+            <form class="edit-form box-shadow" action="/edit/<%= capa._id %>" method="POST">
                 <!--In the form, show the values of the item you are trying to edit:-->
                 <!--CAPA Number-->
                 <label class="edit-capa-number"><%= capa.capaNumber %></label>

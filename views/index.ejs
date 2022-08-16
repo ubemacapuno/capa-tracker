@@ -22,14 +22,14 @@
                     <img src="/images/capa-tracking-logo.svg" alt="capa logo">
                     <h1>CAPA Tracker</h1>
                 </div>
-                <a href="/auth/logout">Logout</a>
+                <h4>Signed in as <%= name %>.  <a href="/auth/logout">Logout</a></h4>
             </div>
         </header>
         <div class="capa-tracking-container">
 
             <section class="capa-submission">
                 <!-- forms can interface DIRECTLY with some of our CRUD operations (ex. sending post requests to server) -->
-                <form action="/" method="POST" class="item-header">
+                <form action="/" method="POST" class="item-header box-shadow">
                     <h2>Submit a New CAPA Report</h2>
                     <!-- CAPA Number -->
                     <label>CAPA Number: </label>
@@ -77,7 +77,7 @@
             </section>
 
             <!-- Loop through and display all capas currently in database: -->
-            <section class="capa-collection">
+            <section class="capa-collection box-shadow">
                 <h2 class="capa-counter">Total CAPAs:  
                     <% let counter = 0;
                     capaReports.forEach(capa => {

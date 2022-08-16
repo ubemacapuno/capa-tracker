@@ -1,6 +1,7 @@
 const express = require('express')
 const { ensureAuth, ensureGuest } = require('./middleware/auth')
 const app = express()
+const cors = require('cors')
 const PORT = 8500;
 const mongoose = require('mongoose');
 //Use env to add protection to the Mongo connection string: 
@@ -11,8 +12,8 @@ const connectDB = require('./config/db')
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo');
-// const MongoClient = require('mongodb').MongoClient
 
+app.use(cors())
 require('./config/passport')(passport)
 connectDB()
 //Declare middlewares (move traffic to and from front-end to endpoints)
@@ -47,8 +48,10 @@ app.get('/capa', ensureAuth, async (req, res) => {
     try {
         CapaReport.find({}, (err,capas) => {
             //Render and FIND list in the database:
+            //pass the user display name and also the capas database for the render:
             res.render('index.ejs', {
-                capaReports: capas
+                name: req.user.displayName,
+                capaReports: capas,
             })
         })  
     } catch (err) {
@@ -94,6 +97,7 @@ app //chain multiple methods together (route, get, post, etc.)
         const id = req.params.id;
         CapaReport.find({}, (err, capas) => {
             res.render("edit.ejs", { 
+                name: req.user.displayName,
                 capaReports: capas, idCapa: id });
         });
     })
@@ -121,6 +125,7 @@ app //chain multiple methods together (route, get, post, etc.)
         const id = req.params.id;
         CapaReport.find({}, (err, capas) => {
             res.render("editdates.ejs", { 
+                name: req.user.displayName,
                 capaReports: capas, idCapa: id });
         });
     })

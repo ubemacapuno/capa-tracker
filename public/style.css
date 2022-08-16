@@ -56,6 +56,10 @@ body {
   color: #000000;
 }
 
+#capa-tracker {
+	color: var(--secondary-color);
+}
+
 p {margin-bottom: 1rem;}
 
 h2, h3, h4, h5 {
@@ -65,18 +69,24 @@ h2, h3, h4, h5 {
 }
 
 h1 {
-  margin-top: 0;
   font-size: 2.488rem;
-  text-shadow: 5px 5px 4px var(--text-color);
-  color: var(--secondary-color);
-  text-align: center;
+}
+
+h1, .about-title {
+	margin-top: 0;
+	text-shadow: 5px 5px 4px var(--text-color);
+	color: var(--secondary-color);
+	text-align: center;
 }
 
 h2 {font-size: 2.074rem;}
 
 h3 {font-size: 1.728rem;}
 
-h4 {font-size: 1.44rem;}
+h4 {
+	font-size: 1.44rem;
+	color: var(--secondary-color);
+}
 
 h5 {font-size: 1.2rem;}
 
@@ -152,8 +162,35 @@ header {
 	background-color: var(--primary-color);
 }
 
+.about-title {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding-bottom: 1rem;
+}
+
 .log-in-container{
 	margin: 3rem 0;
+}
+
+.google-login {
+	display: flex;
+	justify-content: center;
+	padding: 2rem;
+	transition: all 0.2s;
+}
+
+.social {
+	padding-right: 1rem;
+}
+
+.google-login:hover, .social:hover {
+	transform: scale(1.1);
+	font-weight: bold;
+}
+
+.about {
+	padding: 1rem 0;
 }
 
 .logout {
@@ -279,7 +316,6 @@ button:hover, .cancel-button:hover, .edit-dates-button:hover {
 .single-capa-item {
 	padding: 2rem 0;
 	list-style: none;
-	border-bottom: 1px solid var(--white);
 	border-top: 1px solid var(--white);
 }
 
