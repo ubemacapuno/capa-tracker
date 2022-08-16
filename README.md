@@ -60,6 +60,8 @@ In the future, I'd like to:
 - Add functionality to include attachment uploads
 - Add functionality to support .csv export of CAPA data
 - Add logic to warn users of expired/near-expired items
+- Add functionality to include attachment uploads
+- Add functionality to support .csv export of CAPA data
   
 
 ## Lessons Learned:
@@ -68,5 +70,3 @@ In the future, I'd like to:
 - Greater understanding of CRUD operations and routing
 - Deploying full-stack applications to Heroku
 - Incorporating Passport and Google Authentication, and authorized redirect URIs
-- Add functionality to include attachment uploads
-- Add functionality to support .csv export of CAPA data
