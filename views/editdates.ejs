@@ -1,53 +1,56 @@
-<head>
-    <title>CAPA Tracking Module - Edit</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <header class="box-shadow">
-        <div class="logout">
-            <div class="logo-and-title">
-                <a href="/capa"><img src="/images/capa-tracking-logo.svg" alt="capa logo"></a>
-                <h1>CAPA Tracker</h1>
-            </div>
-            <h4>Signed in as <%= name %>.  <a href="/auth/logout">Logout</a></h4>
-        </div>
-    </header>
-    <div class="edit-section">
-        <section>
-        <% capaReports.forEach(capa => { %>
-            <!--Display the capas like normal EXCEPT for the capa that is being EDITED-->
-        <% if (capa._id==idCapa) { %>
-            <h3 class="edit-header">Update <%= capa.capaNumber %> Dates</h3>
-                    <!-- Add a form for editing: -->
-            <form class="edit-form box-shadow" action="/edit/<%= capa._id %>" method="POST">
-               
-                <!-- Date approved/rejected -->
-                <label class="edit-date-capa-approved"><br /><%= capa.dateCapaApproved.toDateString()%> (UTC)</label>
-                <!--possibly add functionality to different page-->
-                <input type="date" name="dateCapaApproved" required>
-
-                <label class="edit-current-phase-date"><br /><%= capa.currentPhaseDueDate.toDateString()%> (UTC)</label>
-                <!--possibly add functionality to different page-->
-                <input type="date" name="currentPhaseDueDate" required>
-
-                <!--Confirm and cancel buttons-->
-                <div class="edit-button-container">
-                    <button type="submit" class="confirm">Confirm</button>
-                    <a href="/edit/<%=capa._id %>" class="cancel">
-                        <div class="cancel-button">
-                            Cancel
-                        </div>
-                    </a>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CAPA Tracking Module - Edit</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+            integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <header class="box-shadow">
+            <div class="logout">
+                <div class="logo-and-title">
+                    <a href="/capa"><img src="/images/capa-tracking-logo.svg" alt="capa logo"></a>
+                    <h1>CAPA Tracker</h1>
                 </div>
-            </form>
-        <% }})  %>
-        </section>
-    </div>
-</body>
+                <h4>Signed in as <%= name %>.  <a href="/auth/logout">Logout</a></h4>
+            </div>
+        </header>
+        <div class="edit-section">
+            <section>
+            <% capaReports.forEach(capa => { %>
+                <!--Display the capas like normal EXCEPT for the capa that is being EDITED-->
+            <% if (capa._id==idCapa) { %>
+                <h3 class="edit-header">Update <%= capa.capaNumber %> Dates</h3>
+                        <!-- Add a form for editing: -->
+                <form class="edit-form box-shadow" action="/edit/<%= capa._id %>" method="POST">
+                
+                    <!-- Date approved/rejected -->
+                    <label class="edit-date-capa-approved"><br /><%= capa.dateCapaApproved.toDateString()%> (UTC)</label>
+                    <!--possibly add functionality to different page-->
+                    <input type="date" name="dateCapaApproved" required>
+
+                    <label class="edit-current-phase-date"><br /><%= capa.currentPhaseDueDate.toDateString()%> (UTC)</label>
+                    <!--possibly add functionality to different page-->
+                    <input type="date" name="currentPhaseDueDate" required>
+
+                    <!--Confirm and cancel buttons-->
+                    <div class="edit-button-container">
+                        <button type="submit" class="confirm">Confirm</button>
+                        <a href="/edit/<%=capa._id %>" class="cancel">
+                            <div class="cancel-button">
+                                Cancel
+                            </div>
+                        </a>
+                    </div>
+                </form>
+            <% }})  %>
+            </section>
+        </div>
+    </body>
+</html>

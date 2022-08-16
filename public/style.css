@@ -50,10 +50,11 @@ html {
 } /*16px*/
 
 body {
-  background: white;
-  font-weight: 400;
-  line-height: 1.75;
-  color: #000000;
+	width: 100%;
+	background: white;
+	font-weight: 400;
+	line-height: 1.75;
+	color: #000000;
 }
 
 #capa-tracker {
@@ -137,7 +138,10 @@ header {
 }
 
 .box-shadow {
-	border: 1px solid;
+	box-shadow: 1px 4px 6px var(--dark-color);
+}
+
+.header-shadow {
 	box-shadow: 1px 4px 6px var(--dark-color);
 }
 
@@ -227,7 +231,6 @@ form {
 	border: 2px solid var(--dark-color);
 	border-radius: 10px;
 	height: 804px;
-	width: 500px;
 	background-color: var(--tertiary-color);
 }
 
@@ -238,6 +241,11 @@ h2 {
 
 .edit-header {
 	color: var(--dark-color);
+}
+
+.capa-submission {
+	width: 500px;
+	overflow: auto;
 }
 
 .capa-submission h2 {
@@ -259,6 +267,7 @@ input {
 }
 
 textarea {
+	width: 90%;
 	resize: none;
 	padding: 1rem;
 }
@@ -345,7 +354,8 @@ button:hover, .cancel-button:hover, .edit-dates-button:hover {
 	height: 700px;
 }
 
-.edit-section {
+.wrapper {
+	padding: 1rem 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -392,6 +402,10 @@ button:hover, .cancel-button:hover, .edit-dates-button:hover {
 }
 
 @media screen and (max-width: 1050px) {
+	h1 {
+		display: none;
+	}
+
 	.capa-tracking-container {
 		flex-direction: column;
 		align-items: center;
@@ -403,3 +417,44 @@ button:hover, .cancel-button:hover, .edit-dates-button:hover {
 	}
   }
 
+@media screen and (max-width: 550px) {
+
+	.capa-collection {
+		height: 100%;
+		margin-bottom: 1rem;
+	}
+
+	form {
+		height: auto;
+	}
+
+	.capa-submission, .capa-collection {
+		width: 95%;
+	}
+	.main-header {
+		margin: 0;
+		font-size: 3.5rem;
+	}
+
+	h2 {
+		font-size: 2.2rem;
+	}
+	h3 {
+		font-size: 1.8rem;
+	}
+	h4 {
+		font-size: 1.5rem;
+		margin: 0;
+	}
+	h5 {
+		font-size: 1.2rem;
+	}
+
+	.login-details {
+		width: 95%;
+	}
+
+	.google-login {
+		padding: 1rem 0;
+	}
+}
