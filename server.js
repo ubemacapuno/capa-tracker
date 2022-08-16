@@ -47,8 +47,10 @@ app.get('/capa', ensureAuth, async (req, res) => {
     try {
         CapaReport.find({}, (err,capas) => {
             //Render and FIND list in the database:
+            //pass the user display name and also the capas database for the render:
             res.render('index.ejs', {
-                capaReports: capas
+                name: req.user.displayName,
+                capaReports: capas,
             })
         })  
     } catch (err) {
@@ -94,6 +96,7 @@ app //chain multiple methods together (route, get, post, etc.)
         const id = req.params.id;
         CapaReport.find({}, (err, capas) => {
             res.render("edit.ejs", { 
+                name: req.user.displayName,
                 capaReports: capas, idCapa: id });
         });
     })
@@ -121,6 +124,7 @@ app //chain multiple methods together (route, get, post, etc.)
         const id = req.params.id;
         CapaReport.find({}, (err, capas) => {
             res.render("editdates.ejs", { 
+                name: req.user.displayName,
                 capaReports: capas, idCapa: id });
         });
     })
