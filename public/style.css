@@ -69,11 +69,14 @@ h2, h3, h4, h5 {
 }
 
 h1 {
-  margin-top: 0;
   font-size: 2.488rem;
-  text-shadow: 5px 5px 4px var(--text-color);
-  color: var(--secondary-color);
-  text-align: center;
+}
+
+h1, .about-title {
+	margin-top: 0;
+	text-shadow: 5px 5px 4px var(--text-color);
+	color: var(--secondary-color);
+	text-align: center;
 }
 
 h2 {font-size: 2.074rem;}
@@ -157,6 +160,13 @@ header {
 	border: 1px solid var(--dark-color);
 	border-radius: 5px;
 	background-color: var(--primary-color);
+}
+
+.about-title {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding-bottom: 1rem;
 }
 
 .log-in-container{
