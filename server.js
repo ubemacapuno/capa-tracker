@@ -1,6 +1,7 @@
 const express = require('express')
 const { ensureAuth, ensureGuest } = require('./middleware/auth')
 const app = express()
+const cors = require('cors')
 const PORT = 8500;
 const mongoose = require('mongoose');
 //Use env to add protection to the Mongo connection string: 
@@ -11,8 +12,8 @@ const connectDB = require('./config/db')
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo');
-// const MongoClient = require('mongodb').MongoClient
 
+app.use(cors())
 require('./config/passport')(passport)
 connectDB()
 //Declare middlewares (move traffic to and from front-end to endpoints)
