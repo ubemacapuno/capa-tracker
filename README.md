@@ -61,8 +61,7 @@ In the future, I'd like to:
 - Add functionality to support .csv export of CAPA data
 - Add logic to warn users of expired/near-expired items
 - Add functionality to include attachment uploads
-- Add functionality to support .csv export of CAPA data
-  
+ 
 
 ## Lessons Learned:
 - Utilizing EJS templating for dynamic content
