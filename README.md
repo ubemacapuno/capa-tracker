@@ -1,4 +1,4 @@
-## CAPA Tracker: <a target="_blank" href="https://capa-tracking-api.herokuapp.com/">Visit Live DEMO Here</a>!
+## CAPA Tracker: <a target="_blank" href="https://capa.up.railway.app/">Visit Live DEMO Here</a>!
 
 Document and track CAPA reports with CAPA Tracker! This full-stack application allows users to create CAPA records, add information, update information, and delete entries. This application incorporates Google authentication.
 
@@ -67,5 +67,5 @@ In the future, I'd like to:
 - Utilizing EJS templating for dynamic content
 - Utilizing mongoose schemas
 - Greater understanding of CRUD operations and routing
-- Deploying full-stack applications to Heroku
+- Deploying full-stack applications to Heroku (RIP free-tier) and Railway
 - Incorporating Passport and Google Authentication, and authorized redirect URIs
